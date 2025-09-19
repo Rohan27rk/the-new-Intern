@@ -1,0 +1,11 @@
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\bin\Debug\net9.0\Interns.Core.deps.json
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\bin\Debug\net9.0\Interns.Core.dll
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\bin\Debug\net9.0\Interns.Core.pdb
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.AssemblyInfoInputs.cache
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.AssemblyInfo.cs
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.csproj.CoreCompileInputs.cache
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.dll
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\refint\Interns.Core.dll
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\Interns.Core.pdb
+C:\Users\Rohan Kanegaonkar\InternProgressTracker\Interns.Core\obj\Debug\net9.0\ref\Interns.Core.dll
