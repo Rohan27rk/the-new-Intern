@@ -1,0 +1,638 @@
+
+Microsoft logo
+
+Copilot
+namespace Interns.Core.Models { public class...
+Try GPT-5
+
+
+
+Today
+You said:
+
+namespace Interns.Core.Models
+{
+    public class Notification
+    {
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
+        public string Title { get; set; }
+        public string Message { get; set; }
+        public bool IsRead { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+What is guid
+Copilot said:
+Copilot
+In C#, a Guid (short for Globally Unique Identifier) is a 128-bit value used to uniquely identify information. It's commonly used for identifiers in databases, APIs, and systems where uniqueness is critical.
+
+Key Points about Guid:
+It ensures uniqueness across space and time.
+It's represented as a 32-character hexadecimal string, like:
+3f2504e0-4f89-11d3-9a0c-0305e82c3301
+In your Notification class, both Id and UserId are of type Guid, meaning:
+Id uniquely identifies each notification.
+UserId links the notification to a specific user.
+Example Usage:
+To generate a new Guid in C#:
+
+
+
+
+C#
+Guid newId = Guid.NewGuid();
+
+Would you like help integrating this model with a database or using it in a service?
+
+
+
+
+
+
+
+
+You said:
+
+Intern Progress Tracker
+
+#Admin
+
+- Admin should perform CRUD operation for Interns, Managers and Trainers, Admin
+
+#Manager
+
+-Manager can view and monitor the progress of interns under specific trainer
+-Manager can view and track the progress of assessment and quizzed submitted by the interns in the form of data visualization(pie, bar graph)
+
+#Trainer
+
+-Trainer creates the task with title, description, deadline
+-Trainers provides quiz questions, correct answers and severity in(Excel, XML, CSV) format 
+-The given format is converted into a structured JSON format for rendering 
+-Response submitted by interns are stored and made visible to both trainer and manager
+-Trainer can assign tasks and quizzes to interns under him/her
+-Trainer sets the deadline for specific tasks and quiz
+-When interns submit the task in the given deadline then trainer will see the GitHub repo of individual intern and gives the score 
+-Trainer should see the progress of individual intern based on task and quiz marks along with leaderboard of interns
+-Progress should be in data visualization
+
+#Interns
+
+-Interns can view the task & quiz assigned by their respective trainers
+-Once the trainers posts the tasks or quiz the intern should get notification with the deadline as an in-app-alert
+-Intern should perform the given task and submit GitHub repo link which should be seen by the trainer in their dashboard
+-intern should see the leaderboard and should see their quiz score too 
+
+Understand the capstone project based on the the above prompt
+Copilot said:
+Copilot
+Thanks for sharing the detailed prompt! Based on this, the Intern Progress Tracker capstone project can be understood as a role-based performance monitoring and task management system tailored for internship programs. Here's a breakdown of the system's core components and functionalities:
+
+🔧 System Overview
+🎯 Goal:
+To track intern progress through tasks and quizzes, facilitate communication between trainers, managers, and interns, and visualize performance data.
+
+👥 User Roles & Responsibilities
+🛠️ Admin
+Full control over:
+CRUD operations for Interns, Managers, Trainers, and Admins.
+Likely includes user registration, role assignment, and access control.
+📊 Manager
+View intern progress under specific trainers.
+Monitor assessments and quizzes submitted by interns.
+Visualize data using:
+Pie charts
+Bar graphs
+Possibly dashboards showing performance trends.
+🧑‍🏫 Trainer
+Create tasks with:
+Title, description, deadline.
+Upload quizzes in:
+Excel, XML, or CSV formats.
+These are parsed into structured JSON for rendering.
+Assign tasks/quizzes to interns.
+Set deadlines.
+View intern submissions:
+GitHub repo links.
+Score them based on quality and timeliness.
+Track intern progress:
+Task and quiz scores.
+Leaderboard view.
+Data visualization for performance.
+👨‍💻 Intern
+View assigned tasks/quizzes.
+Receive notifications (in-app alerts) with deadlines.
+Submit GitHub repo links for tasks.
+View leaderboard and quiz scores.
+📈 Key Features
+Role-based dashboards.
+Data visualization for performance tracking.
+File parsing (Excel/XML/CSV → JSON).
+Notifications system.
+Leaderboard for competitive motivation.
+GitHub integration for task submissions.
+🧱 Suggested Tech Stack
+Frontend: Angular / React
+Backend: ASP.NET Core / Node.js
+Database: SQL Server / PostgreSQL
+File Parsing: C# libraries (e.g., EPPlus for Excel, XmlSerializer, CsvHelper)
+Visualization: Chart.js / D3.js
+Authentication: JWT / IdentityServer
+Notifications: SignalR (for real-time alerts)
+Would you like help designing the database schema, API endpoints, or UI wireframes for this project?
+
+
+
+
+
+
+
+
+You said:
+
+Use React, Bootstrap, Axios, Asp.Net Core, Wen Api, Sql Server, C# libraries, Chart.js, JWT, SignalR
+Memory updated
+Memory updated
+Copilot said:
+Copilot
+Great choice of tech stack, Aditya! Here's a high-level breakdown of how you can structure the Intern Progress Tracker using the tools you've selected:
+
+🧱 Architecture Overview
+🔹 Frontend (React + Bootstrap + Axios + Chart.js)
+React: Component-based UI for each role (Admin, Manager, Trainer, Intern).
+Bootstrap: Responsive design and layout.
+Axios: API calls to the ASP.NET Core backend.
+Chart.js: Data visualization (pie charts, bar graphs, leaderboards).
+🔹 Backend (ASP.NET Core Web API + C# Libraries)
+ASP.NET Core: RESTful APIs for CRUD operations, authentication, task/quiz management, file parsing, and progress tracking.
+C# Libraries:
+EPPlus for Excel parsing.
+XmlSerializer for XML.
+CsvHelper for CSV.
+System.Text.Json for JSON conversion.
+🔹 Database (SQL Server)
+Tables for:
+Users (Interns, Trainers, Managers, Admins)
+Tasks
+Quizzes
+Submissions
+Notifications
+Scores
+Leaderboards
+🔹 Authentication (JWT)
+Secure login and role-based access control.
+Token-based authentication for API requests.
+🔹 Real-Time Features (SignalR)
+In-app alerts for interns when tasks/quizzes are assigned.
+Live updates for trainers and managers on submissions and scores.
+📌 Suggested Modules
+✅ Admin Panel
+Manage users (CRUD for Interns, Trainers, Managers).
+Assign roles and permissions.
+✅ Trainer Dashboard
+Upload quizzes (Excel/XML/CSV → JSON).
+Create and assign tasks.
+View submissions and score them.
+Track intern progress and leaderboard.
+✅ Manager Dashboard
+View intern progress under trainers.
+Visualize quiz/task performance.
+✅ Intern Dashboard
+View assigned tasks/quizzes.
+Submit GitHub repo links.
+View scores and leaderboard.
+Receive real-time notifications.
+Would you like help with:
+
+Database schema design?
+API endpoint planning?
+React component structure?
+File parsing logic in C#?
+Let me know where you'd like to start!
+
+
+
+
+
+
+
+
+You said:
+
+Database schema design
+Copilot said:
+Copilot
+Here’s a suggested database schema for your Intern Progress Tracker using SQL Server, designed to support all the features and roles you described:
+
+🗂️ Core Tables
+1. Users
+
+
+
+SQL
+UserId UNIQUEIDENTIFIER PRIMARY KEY,
+Name NVARCHAR(100),
+Email NVARCHAR(100) UNIQUE,
+PasswordHash NVARCHAR(MAX),
+Role NVARCHAR(20), -- Admin, Manager, Trainer, Intern
+CreatedAt DATETIME
+
+2. Trainers
+
+
+
+SQL
+TrainerId UNIQUEIDENTIFIER PRIMARY KEY,
+UserId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Users(UserId)
+
+3. Managers
+
+
+
+SQL
+ManagerId UNIQUEIDENTIFIER PRIMARY KEY,
+UserId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Users(UserId)
+
+4. Interns
+
+
+
+SQL
+InternId UNIQUEIDENTIFIER PRIMARY KEY,
+UserId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Users(UserId),
+TrainerId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Trainers(TrainerId)
+
+📋 Task & Quiz Management
+5. Tasks
+
+
+
+SQL
+TaskId UNIQUEIDENTIFIER PRIMARY KEY,
+TrainerId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Trainers(TrainerId),
+Title NVARCHAR(200),
+Description NVARCHAR(MAX),
+Deadline DATETIME,
+CreatedAt DATETIME
+
+6. Quizzes
+
+
+
+SQL
+QuizId UNIQUEIDENTIFIER PRIMARY KEY,
+TrainerId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Trainers(TrainerId),
+Title NVARCHAR(200),
+Deadline DATETIME,
+CreatedAt DATETIME
+
+7. QuizQuestions
+
+
+
+SQL
+QuestionId UNIQUEIDENTIFIER PRIMARY KEY,
+QuizId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Quizzes(QuizId),
+QuestionText NVARCHAR(MAX),
+CorrectAnswer NVARCHAR(200),
+Severity INT
+
+📤 Submissions
+8. TaskSubmissions
+
+
+
+SQL
+SubmissionId UNIQUEIDENTIFIER PRIMARY KEY,
+TaskId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Tasks(TaskId),
+InternId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Interns(InternId),
+GitHubRepoLink NVARCHAR(300),
+Score INT,
+SubmittedAt DATETIME
+
+9. QuizSubmissions
+
+
+
+SQL
+SubmissionId UNIQUEIDENTIFIER PRIMARY KEY,
+QuizId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Quizzes(QuizId),
+InternId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Interns(InternId),
+Score INT,
+SubmittedAt DATETIME
+
+🔔 Notifications
+10. Notifications
+
+
+
+SQL
+NotificationId UNIQUEIDENTIFIER PRIMARY KEY,
+UserId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Users(UserId),
+Title NVARCHAR(200),
+Message NVARCHAR(MAX),
+IsRead BIT DEFAULT 0,
+CreatedAt DATETIME DEFAULT GETUTCDATE()
+
+🏆 Leaderboard
+11. Leaderboard
+
+
+
+SQL
+LeaderboardId UNIQUEIDENTIFIER PRIMARY KEY,
+InternId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Interns(InternId),
+TotalScore INT,
+Rank INT
+
+📊 Visualization Support
+You can use views or stored procedures to aggregate data for:
+
+Task completion rates
+Quiz performance
+Intern progress over time
+Trainer-wise and Manager-wise reports
+Would you like me to generate the actual SQL scripts for creating these tables? Or help you design the API endpoints that interact with this schema?
+
+
+
+
+
+
+
+
+You said:
+
+I want to use Code first approach
+Copilot said:
+Copilot
+AI-generated content may be incorrect
+OK, I've stopped generating the response. Ask something else or select  to try the prompt guide.
+
+
+
+
+Give feedback
+Today
+You said:
+
+Dont use Guid and Use Validations as well
+Copilot said:
+Copilot
+Perfect! Since you're using the Code First approach with Entity Framework Core, and you want to avoid Guid and include validations, here's how you can define your models using int as primary keys and Data Annotations for validation.
+
+✅ User Model
+
+
+
+C#
+public class User
+{
+    [Key]
+    public int UserId { get; set; }
+
+    [Required, MaxLength(100)]
+    public string Name { get; set; }
+
+    [Required, EmailAddress, MaxLength(100)]
+    public string Email { get; set; }
+
+    [Required]
+    public string PasswordHash { get; set; }
+
+    [Required]
+    public string Role { get; set; } // Admin, Manager, Trainer, Intern
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+
+Show more lines
+✅ Trainer, Manager, Intern Models
+
+
+
+C#
+public class Trainer
+{
+    [Key]
+    public int TrainerId { get; set; }
+
+    [Required]
+    public int UserId { get; set; }
+
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+}
+
+public class Manager
+{
+    [Key]
+    public int ManagerId { get; set; }
+
+    [Required]
+    public int UserId { get; set; }
+
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+}
+
+public class Intern
+{
+    [Key]
+    public int InternId { get; set; }
+
+    [Required]
+    public int UserId { get; set; }
+
+    [Required]
+    public int TrainerId { get; set; }
+
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+
+    [ForeignKey("TrainerId")]
+    public Trainer Trainer { get; set; }
+}
+
+
+Show more lines
+✅ Task Model
+
+
+
+C#
+public class Task
+{
+    [Key]
+    public int TaskId { get; set; }
+
+    [Required]
+    public int TrainerId { get; set; }
+
+    [Required, MaxLength(200)]
+    public string Title { get; set; }
+
+    [Required]
+    public string Description { get; set; }
+
+    public DateTime Deadline { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [ForeignKey("TrainerId")]
+    public Trainer Trainer { get; set; }
+}
+
+
+Show more lines
+✅ Quiz & QuizQuestion Models
+
+
+
+C#
+public class Quiz
+{
+    [Key]
+    public int QuizId { get; set; }
+
+    [Required]
+    public int TrainerId { get; set; }
+
+    [Required, MaxLength(200)]
+    public string Title { get; set; }
+
+    public DateTime Deadline { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [ForeignKey("TrainerId")]
+    public Trainer Trainer { get; set; }
+}
+
+public class QuizQuestion
+{
+    [Key]
+    public int QuestionId { get; set; }
+
+    [Required]
+    public int QuizId { get; set; }
+
+    [Required]
+    public string QuestionText { get; set; }
+
+    [Required]
+    public string CorrectAnswer { get; set; }
+
+    [Range(1, 10)]
+    public int Severity { get; set; }
+
+    [ForeignKey("QuizId")]
+    public Quiz Quiz { get; set; }
+}
+
+
+Show more lines
+✅ Submissions
+
+
+
+C#
+public class TaskSubmission
+{
+    [Key]
+    public int SubmissionId { get; set; }
+
+    [Required]
+    public int TaskId { get; set; }
+
+    [Required]
+    public int InternId { get; set; }
+
+    [Required, Url]
+    public string GitHubRepoLink { get; set; }
+
+    [Range(0, 100)]
+    public int Score { get; set; }
+
+    public DateTime SubmittedAt { get; set; } = DateTime.UtcNow;
+
+    [ForeignKey("TaskId")]
+    public Task Task { get; set; }
+
+    [ForeignKey("InternId")]
+    public Intern Intern { get; set; }
+}
+
+public class QuizSubmission
+{
+    [Key]
+    public int SubmissionId { get; set; }
+
+    [Required]
+    public int QuizId { get; set; }
+
+    [Required]
+    public int InternId { get; set; }
+
+    [Range(0, 100)]
+    public int Score { get; set; }
+
+    public DateTime SubmittedAt { get; set; } = DateTime.UtcNow;
+
+    [ForeignKey("QuizId")]
+    public Quiz Quiz { get; set; }
+
+    [ForeignKey("InternId")]
+    public Intern Intern { get; set; }
+}
+
+
+Show more lines
+✅ Notification Model
+
+
+
+C#
+public class Notification
+{
+    [Key]
+    public int NotificationId { get; set; }
+
+    [Required]
+    public int UserId { get; set; }
+
+    [Required, MaxLength(200)]
+    public string Title { get; set; }
+
+    [Required]
+    public string Message { get; set; }
+
+    public bool IsRead { get; set; } = false;
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+}
+
+
+Show more lines
+Would you like me to help you set up the DbContext class next, or generate migration commands for this schema?
+
+
+
+
+
+
+
+
+
+Help create DbContext class
+
+Generate EF Core migrations
+
+Add custom validation attributes
+
+
